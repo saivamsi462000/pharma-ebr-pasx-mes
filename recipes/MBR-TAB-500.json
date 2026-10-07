@@ -1,0 +1,88 @@
+{
+  "mbr_id": "MBR-TAB-500",
+  "version": "3.0",
+  "status": "Approved",
+  "product": {
+    "material": "FG-100500",
+    "description": "Generic Film-Coated Tablet 500 mg (training product)",
+    "batch_size_kg": 120.0,
+    "theoretical_yield_tablets": 200000
+  },
+  "approvals": [
+    {"role": "Author", "user": "mes.author"},
+    {"role": "QA Approver", "user": "qa.approver"}
+  ],
+  "bom": [
+    {"material": "RM-API-500", "description": "Active ingredient", "qty_kg": 100.0, "tolerance_pct": 0.5},
+    {"material": "RM-MCC-101", "description": "Microcrystalline cellulose", "qty_kg": 14.4, "tolerance_pct": 1.0},
+    {"material": "RM-PVP-K30", "description": "Povidone K30 (binder)", "qty_kg": 3.6, "tolerance_pct": 1.0},
+    {"material": "RM-MGST-01", "description": "Magnesium stearate", "qty_kg": 1.2, "tolerance_pct": 2.0},
+    {"material": "RM-COAT-WH", "description": "Film-coating suspension solids", "qty_kg": 0.8, "tolerance_pct": 2.0}
+  ],
+  "operations": [
+    {
+      "op_id": "0010", "name": "Dispensing", "equipment_class": "Dispensing Booth",
+      "phases": [
+        {"phase_id": "0010-01", "type": "line_clearance", "instruction": "Verify dispensing booth line clearance and cleaning status label",
+         "signature": "performer_verifier"},
+        {"phase_id": "0010-02", "type": "equipment_check", "instruction": "Scan booth and balance; confirm calibration status is valid",
+         "equipment": ["BOOTH-01", "BAL-150KG-02"], "signature": "performer"},
+        {"phase_id": "0010-03", "type": "weigh_dispense", "instruction": "Weigh and dispense each BOM material against scanned container",
+         "materials": ["RM-API-500", "RM-MCC-101", "RM-PVP-K30", "RM-MGST-01", "RM-COAT-WH"], "signature": "performer_verifier"}
+      ]
+    },
+    {
+      "op_id": "0020", "name": "Wet Granulation", "equipment_class": "High-Shear Granulator",
+      "phases": [
+        {"phase_id": "0020-01", "type": "equipment_check", "instruction": "Scan granulator; confirm clean and calibrated",
+         "equipment": ["HSG-300"], "signature": "performer"},
+        {"phase_id": "0020-02", "type": "process_parameter", "instruction": "Record impeller speed during wet massing",
+         "parameter": "impeller_speed_rpm", "target": 150, "low": 140, "high": 160, "criticality": "CPP", "signature": "performer"},
+        {"phase_id": "0020-03", "type": "process_parameter", "instruction": "Record granulation end-point power consumption",
+         "parameter": "endpoint_power_kw", "target": 12.0, "low": 11.0, "high": 13.0, "criticality": "CPP", "signature": "performer"},
+        {"phase_id": "0020-04", "type": "process_parameter", "instruction": "Record LOD after fluid-bed drying",
+         "parameter": "lod_pct", "target": 2.0, "low": 1.0, "high": 3.0, "criticality": "CQA", "signature": "performer_verifier"}
+      ]
+    },
+    {
+      "op_id": "0030", "name": "Blending", "equipment_class": "Bin Blender",
+      "phases": [
+        {"phase_id": "0030-01", "type": "process_parameter", "instruction": "Record blend time",
+         "parameter": "blend_time_min", "target": 15, "low": 14, "high": 16, "criticality": "CPP", "signature": "performer"},
+        {"phase_id": "0030-02", "type": "sampling", "instruction": "Pull 10 blend-uniformity samples; send to QC (LIMS)",
+         "lims_test": "BLEND-UNIF", "signature": "performer_verifier"},
+        {"phase_id": "0030-03", "type": "lims_result", "instruction": "Retrieve blend uniformity RSD from LIMS",
+         "parameter": "blend_uniformity_rsd_pct", "low": 0.0, "high": 5.0, "criticality": "CQA", "signature": "performer"}
+      ]
+    },
+    {
+      "op_id": "0040", "name": "Compression", "equipment_class": "Rotary Tablet Press",
+      "phases": [
+        {"phase_id": "0040-01", "type": "process_parameter", "instruction": "Record average tablet weight (IPC)",
+         "parameter": "tablet_weight_mg", "target": 600, "low": 585, "high": 615, "criticality": "CQA", "signature": "performer"},
+        {"phase_id": "0040-02", "type": "process_parameter", "instruction": "Record tablet hardness (IPC)",
+         "parameter": "hardness_kp", "target": 14, "low": 10, "high": 18, "criticality": "CQA", "signature": "performer"},
+        {"phase_id": "0040-03", "type": "process_parameter", "instruction": "Record main compression force",
+         "parameter": "compression_force_kn", "target": 18, "low": 15, "high": 21, "criticality": "CPP", "signature": "performer"}
+      ]
+    },
+    {
+      "op_id": "0050", "name": "Film Coating", "equipment_class": "Perforated Pan Coater",
+      "phases": [
+        {"phase_id": "0050-01", "type": "process_parameter", "instruction": "Record exhaust air temperature",
+         "parameter": "exhaust_temp_c", "target": 42, "low": 38, "high": 46, "criticality": "CPP", "signature": "performer"},
+        {"phase_id": "0050-02", "type": "process_parameter", "instruction": "Record coating weight gain",
+         "parameter": "weight_gain_pct", "target": 3.0, "low": 2.5, "high": 3.5, "criticality": "CQA", "signature": "performer_verifier"}
+      ]
+    },
+    {
+      "op_id": "0060", "name": "Packaging", "equipment_class": "Blister Line",
+      "phases": [
+        {"phase_id": "0060-01", "type": "label_print", "instruction": "Print and verify shipper labels (Zebra) with batch, expiry and GTIN",
+         "signature": "performer_verifier"},
+        {"phase_id": "0060-02", "type": "yield", "instruction": "Record good tablets packed; system calculates yield",
+         "parameter": "yield_pct", "low": 95.0, "high": 101.0, "criticality": "KPI", "signature": "performer_verifier"}
+      ]
+    }
+  ]
+}

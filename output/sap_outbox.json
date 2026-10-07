@@ -1,0 +1,111 @@
+[
+  {
+    "msg_type": "GOODS_ISSUE",
+    "sent_at": "2026-10-07T22:25:32+00:00",
+    "movement_type": "261",
+    "order_no": "PO-1000452",
+    "material": "RM-API-500",
+    "batch": "L-API-2601",
+    "qty": 100.12,
+    "uom": "KG"
+  },
+  {
+    "msg_type": "GOODS_ISSUE",
+    "sent_at": "2026-10-07T22:25:32+00:00",
+    "movement_type": "261",
+    "order_no": "PO-1000452",
+    "material": "RM-MCC-101",
+    "batch": "L-MCC-2588",
+    "qty": 14.38,
+    "uom": "KG"
+  },
+  {
+    "msg_type": "GOODS_ISSUE",
+    "sent_at": "2026-10-07T22:25:32+00:00",
+    "movement_type": "261",
+    "order_no": "PO-1000452",
+    "material": "RM-PVP-K30",
+    "batch": "L-PVP-2542",
+    "qty": 3.61,
+    "uom": "KG"
+  },
+  {
+    "msg_type": "GOODS_ISSUE",
+    "sent_at": "2026-10-07T22:25:32+00:00",
+    "movement_type": "261",
+    "order_no": "PO-1000452",
+    "material": "RM-MGST-01",
+    "batch": "L-MGS-2519",
+    "qty": 1.21,
+    "uom": "KG"
+  },
+  {
+    "msg_type": "GOODS_ISSUE",
+    "sent_at": "2026-10-07T22:25:32+00:00",
+    "movement_type": "261",
+    "order_no": "PO-1000452",
+    "material": "RM-COAT-WH",
+    "batch": "L-CWH-2607",
+    "qty": 0.8,
+    "uom": "KG"
+  },
+  {
+    "msg_type": "CONFIRMATION",
+    "sent_at": "2026-10-07T22:25:32+00:00",
+    "order_no": "PO-1000452",
+    "operation": "0010",
+    "yield_qty": null
+  },
+  {
+    "msg_type": "CONFIRMATION",
+    "sent_at": "2026-10-07T22:25:32+00:00",
+    "order_no": "PO-1000452",
+    "operation": "0020",
+    "yield_qty": null
+  },
+  {
+    "msg_type": "CONFIRMATION",
+    "sent_at": "2026-10-07T22:25:32+00:00",
+    "order_no": "PO-1000452",
+    "operation": "0030",
+    "yield_qty": null
+  },
+  {
+    "msg_type": "CONFIRMATION",
+    "sent_at": "2026-10-07T22:25:32+00:00",
+    "order_no": "PO-1000452",
+    "operation": "0040",
+    "yield_qty": null
+  },
+  {
+    "msg_type": "CONFIRMATION",
+    "sent_at": "2026-10-07T22:25:32+00:00",
+    "order_no": "PO-1000452",
+    "operation": "0050",
+    "yield_qty": null
+  },
+  {
+    "msg_type": "GOODS_RECEIPT",
+    "sent_at": "2026-10-07T22:25:32+00:00",
+    "movement_type": "101",
+    "order_no": "PO-1000452",
+    "material": "FG-100500",
+    "batch": "B260302",
+    "qty": 195210,
+    "uom": "EA",
+    "stock_type": "QI"
+  },
+  {
+    "msg_type": "CONFIRMATION",
+    "sent_at": "2026-10-07T22:25:32+00:00",
+    "order_no": "PO-1000452",
+    "operation": "0060",
+    "yield_qty": null
+  },
+  {
+    "msg_type": "USAGE_DECISION",
+    "sent_at": "2026-10-07T22:25:32+00:00",
+    "batch": "B260302",
+    "decision": "A"
+  }
+]
